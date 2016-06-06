@@ -1,5 +1,9 @@
 """
+Replication material for 'Complexity Science and Legal Systems' Submitted to Science (June 2016)
+# J.B. Ruhl, Daniel Martin Katz, Michael J. Bommarito II
+
 @date 20160605
+@author Michael J Bommarito <mike@lexpredict.com>
 """
 
 # Imports

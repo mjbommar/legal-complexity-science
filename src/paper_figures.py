@@ -1,22 +1,20 @@
 """
+Replication material for 'Complexity Science and Legal Systems' Submitted to Science (June 2016)
+# J.B. Ruhl, Daniel Martin Katz, Michael J. Bommarito II
+
 @date 20160605
+@author Michael J Bommarito <mike@lexpredict.com>
 """
 
 # Imports
-import copy
-import gc
 import glob
 import igraph
-import lxml.etree
-import lxml.html
-import multiprocessing
 import os
 import pandas
 import pickle
 import re
-import zipfile
 
-# Setup matplotlib and seaborn
+# Setup matplotlib and seaborn with agg backend and default style
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -34,7 +32,6 @@ from us_code_parser import CodeSnapshot
 
 # Regexs
 RE_YEAR = re.compile("([0-9]{4,})", re.UNICODE)
-
 
 
 def is_section(s):
@@ -78,7 +75,7 @@ def generate_section_data(base_pickle_path="data/pickle/", base_output_path="dat
     """
     # Aggregate across all years
     all_section_df = pandas.DataFrame()
-    
+
     # Get list of years
     pickle_file_list = sorted(glob.glob(os.path.join(base_pickle_path, "*.pickle")))
     for pickle_file_name in pickle_file_list:
@@ -91,7 +88,7 @@ def generate_section_data(base_pickle_path="data/pickle/", base_output_path="dat
         # Parse
         section_df = parse_sections(pickle_data.sections)
         section_df.to_csv(os.path.join(base_output_path, "section_data_{0}.csv".format(year)),
-                      index=False, encoding="utf-8")
+                          index=False, encoding="utf-8")
 
         # Setup all section data frame
         section_df.loc[:, "year"] = year
@@ -105,7 +102,7 @@ def generate_section_data(base_pickle_path="data/pickle/", base_output_path="dat
     section_ts.to_csv("paper/section_ts.csv")
     tokens_ts = all_section_df.groupby(["year"])["num_tokens"].sum()
     tokens_ts.to_csv("paper/token_ts.csv")
-    
+
 
 def generate_structural_figure(code_snapshot):
     """
@@ -123,7 +120,8 @@ def generate_structural_figure(code_snapshot):
     p = seaborn.cubehelix_palette(8, start=2, rot=0, dark=0, light=.95, reverse=True)
     title_list = list(set([n.split("/")[1] if n.count("/") > 1 else None for n in code_snapshot.nodes]))
     cmap = seaborn.cubehelix_palette(len(title_list))
-    node_color = [cmap.as_hex()[title_list.index(n.split("/")[1])] if n.count("/") > 1 else "#000000" for n in code_snapshot.nodes]
+    node_color = [cmap.as_hex()[title_list.index(n.split("/")[1])] if n.count("/") > 1 else "#000000" for n in
+                  code_snapshot.nodes]
 
     # Plot
     x, y = zip(*layout)
@@ -139,16 +137,17 @@ def generate_structural_figure(code_snapshot):
 
     # Add edges
     for node_a, node_b in edge_list:
-            ax.add_line(matplotlib.lines.Line2D([layout[node_a][0], layout[node_b][0]],
-                                                                        [layout[node_a][1], layout[node_b][1]],
-                                                                        linewidth=0.1,
-                                                                        alpha=0.15,
-                                                                        color=node_color[node_b]))
-    
+        ax.add_line(matplotlib.lines.Line2D([layout[node_a][0], layout[node_b][0]],
+                                            [layout[node_a][1], layout[node_b][1]],
+                                            linewidth=0.1,
+                                            alpha=0.15,
+                                            color=node_color[node_b]))
+
     # Draw canvas
     f.canvas.draw()
-    plt.savefig("paper/us-code-structure-network.png", bbox_inches="tight")    
-        
+    plt.savefig("paper/us-code-structure-network.png", bbox_inches="tight")
+
+
 if __name__ == "__main__":
     # Output section data
     generate_section_data()
