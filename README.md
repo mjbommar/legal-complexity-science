@@ -5,6 +5,8 @@ Complexity Science and Legal Systems
   *  __Paper URL__: N/A
   *  __Blog URL__: N/A
 
+![United States Code](https://raw.githubusercontent.com/mjbommar/legal-complexity-science/master/paper/us-code-structure-network.png)
+
 ## Paper Abstract
 Forthcoming.
 
