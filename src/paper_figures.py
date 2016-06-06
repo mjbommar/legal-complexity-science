@@ -70,7 +70,7 @@ def parse_sections(sections):
     return section_df
 
 
-def generate_section_data(base_pickle_path="data/pickle/", base_output_path="data/outputs/"):
+def generate_section_data(base_pickle_path="data/pickle/", base_output_path="data/output/"):
     """
     Generate section CSV data from pickle files.
     :param base_pickle_path: base path to pickle files
