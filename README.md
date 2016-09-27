@@ -5,7 +5,7 @@ Complexity Science and Legal Systems
   *  __Paper URL__: N/A
   *  __Blog URL__: N/A
 
-![United States Code](https://raw.githubusercontent.com/mjbommar/legal-complexity-science/master/paper/us-code-structure-network.png)
+![Supreme Court Phase Transition](https://raw.githubusercontent.com/mjbommar/legal-complexity-science/master/figures/scotus_citation_phase_transition.png)
 
 ## Paper Abstract
 Forthcoming.
