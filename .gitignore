@@ -1,5 +1,8 @@
 .idea
+.*
 env
+venv
+ve
 data/input
 data/pickle
 data/outputs
