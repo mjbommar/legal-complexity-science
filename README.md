@@ -13,8 +13,5 @@ Forthcoming.
 ## Source Description
 The source and data in this repository allow for the reproduction of the results and figures in this paper.
 
-## Data Description
-The data used in this paper is available from [the Office of the Law Revision Counsel here](http://uscode.house.gov/download/annualhistoricalarchives/annualhistoricalarchives.htm), as automated in the `setup_data.sh` script.
-
 ## Version
-The latest version of this paper was released on June 5, 2016.
+The latest version of this paper was released on September 27th, 2016.
